@@ -1,5 +1,5 @@
 package lpoo_3005;
-
+//teste
 import java.util.ArrayList;
 
 public class Banco implements IBanco {
