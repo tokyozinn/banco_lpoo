@@ -2,24 +2,48 @@ package lpoo_3005;
 
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 public class Banco implements IBanco {
 
-	ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+	public ArrayList<Cliente> clientes;
+	
+	public Banco() {
+		this.clientes = new ArrayList<Cliente>();
+	}
 	
 	@Override
 	public void cadastraCliente(String cpf, String nome) {
 		Cliente c = new Cliente(cpf, nome);
-		clientes.add(c);
+		this.clientes.add(c);
 	}
 
 	@Override
 	public void setEndereco(String cpf, String nomeDaRua, int numero) {
-		for (Cliente cliente : clientes) {
-			if(cliente.equals(cpf)) {
-				
+		
+		boolean isInList = false;
+		for(Cliente cliente : clientes) {
+			if(cliente.getCpf().equals(cpf)) {
+				isInList = true;
+				cliente.setEndereco(nomeDaRua, numero);
+				return;
+			} else {
+				isInList = false;
 			}
 		}
-
+		
+		if (! isInList) {
+			JOptionPane.showMessageDialog(null, "CPF não encontrado!", "Erro", 1);
+		} 
+		
+		
+//		for (Cliente cliente : this.clientes) {
+//			if(cliente.getCpf().equals(cpf)) {
+//				cliente.setEndereco(nomeDaRua, numero);
+//				return;
+//			}
+//			JOptionPane.showMessageDialog(null, "CPF não encontrado no sistema", "ERRO", 1);
+//		}
 	}
 
 	@Override
@@ -57,5 +81,16 @@ public class Banco implements IBanco {
 		// TODO Auto-generated method stub
 
 	}
+
+	@Override
+	public String toString() {
+		return "Banco [clientes=" + clientes + "]";
+	}
+	
+	public ArrayList<Cliente> getClientes() {
+		return this.clientes;
+	}
+	
+	
 
 }
