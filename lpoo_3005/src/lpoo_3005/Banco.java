@@ -1,21 +1,23 @@
 package lpoo_3005;
 
-import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 import javax.swing.JOptionPane;
 
 public class Banco implements IBanco {
 
-	public ArrayList<Cliente> clientes;
-	
-	public Banco() {
-		this.clientes = new ArrayList<Cliente>();
-	}
+	private Set<Cliente> clientes = new HashSet<Cliente>();
+	private Map<String, Cliente> cpfCliente = new HashMap<>();
 	
 	@Override
 	public void cadastraCliente(String cpf, String nome) {
 		Cliente c = new Cliente(cpf, nome);
 		this.clientes.add(c);
+		this.cpfCliente.put(cpf, c);
 	}
 
 	@Override
@@ -36,19 +38,23 @@ public class Banco implements IBanco {
 			JOptionPane.showMessageDialog(null, "CPF não encontrado!", "Erro", 1);
 		} 
 		
-		
-//		for (Cliente cliente : this.clientes) {
-//			if(cliente.getCpf().equals(cpf)) {
-//				cliente.setEndereco(nomeDaRua, numero);
-//				return;
-//			}
-//			JOptionPane.showMessageDialog(null, "CPF não encontrado no sistema", "ERRO", 1);
-//		}
 	}
 
 	@Override
 	public void setConta(String cpf, TipoContas tipoContas) {
-		// TODO Auto-generated method stub
+
+		boolean isInList = false;
+		for(Cliente c : clientes) {
+			if (c.getCpf().equals(cpf)) {
+				c.setConta(tipoContas);
+				isInList = true;
+				break;
+			}
+		}
+		
+		if (! isInList) {
+			JOptionPane.showMessageDialog(null, "CPF não encontrado", "ERRO", 1);
+		}
 
 	}
 
@@ -87,8 +93,13 @@ public class Banco implements IBanco {
 		return "Banco [clientes=" + clientes + "]";
 	}
 	
-	public ArrayList<Cliente> getClientes() {
-		return this.clientes;
+	public Set<Cliente> getClientes() {
+		return Collections.unmodifiableSet(this.clientes);
+	}
+	
+	
+	public Cliente buscaCliente(String cpf) {
+		return this.cpfCliente.get(cpf);
 	}
 	
 	

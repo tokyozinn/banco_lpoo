@@ -10,9 +10,12 @@ public class Cliente {
 	private String cpf;
 	private String nome;
 	private Endereco endereco;
-	private Conta conta;
+	private TipoContas conta;
 
 	public Cliente(String cpf, String n) {
+		if (cpf == null) {
+			throw new NullPointerException("CPF não pode ser null");
+		}
 		this.cpf = cpf;
 		this.nome = n;
 	}
@@ -28,6 +31,11 @@ public class Cliente {
 		
 		return this.cpf.equals(cliente.cpf);
 	}
+	
+	@Override
+	public int hashCode() {
+		return this.cpf.hashCode();
+	}
 
 	public String getCpf() {
 		return this.cpf;
@@ -37,7 +45,15 @@ public class Cliente {
 		this.endereco = new Endereco(nomeDaRua, numero);
 	}
 	
+	public void setConta(TipoContas t) {
+		this.conta = t;
+	}
+	
 	public String getNome() {
 		return this.nome;
+	}
+	
+	public TipoContas getConta() {
+		return this.conta;
 	}
 }

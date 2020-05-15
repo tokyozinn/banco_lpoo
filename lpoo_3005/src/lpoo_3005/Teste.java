@@ -14,9 +14,16 @@ public class Teste {
 		b.cadastraCliente("6", "Gabi");
 		b.cadastraCliente("7", "Joana");
 		b.cadastraCliente("8", "Irene");
+		b.cadastraCliente("8", "Irene");
+		b.cadastraCliente("8", "Irene");
+		b.cadastraCliente("8", "Irene");
+		b.cadastraCliente("8", "Irene");
+		b.cadastraCliente("8", "Irene");
+		b.cadastraCliente("8", "Irene");
+		b.cadastraCliente("8", "Irene");
+		b.cadastraCliente("8", "Irene");
 		
-		b.setEndereco("1", "Rua da Flavia", 12);
-
+		Cliente c1 = b.buscaCliente("1");
 		System.out.println(b.getClientes());
 	}
 }
