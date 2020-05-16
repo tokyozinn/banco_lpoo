@@ -16,5 +16,10 @@ public class ContaMinima extends Conta {
 		return "Mínima";
 	}
 
+	@Override
+	public void atualizaTaxas() {
+		return;
+	}
+
 
 }

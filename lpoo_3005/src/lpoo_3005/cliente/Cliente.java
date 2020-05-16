@@ -6,19 +6,14 @@ import lpoo_3005.contas.ContaMinima;
 import lpoo_3005.contas.ContaStandard;
 import lpoo_3005.contas.ContaUmPorcento;
 
-
 public class Cliente {
-	
-	@Override
-	public String toString() {
-		return "Cliente [cpf=" + cpf + ", nome=" + nome + ", endereco=" + endereco + ", conta=" + conta + "]\n";
-	}
 
 	private String cpf;
 	private String nome;
 	private Endereco endereco;
 	private Conta conta;
 
+	// Garanto no constructor que não terei um CPF nulo, assim no método equals eu não preciso fazer essa verificação
 	public Cliente(String cpf, String n) {
 		if (cpf == null) {
 			throw new NullPointerException("CPF não pode ser null");
@@ -27,18 +22,16 @@ public class Cliente {
 		this.nome = n;
 	}
 
+	// Nesta classe, caso o cliente tenha o mesmo CPF, ele será considerado igual!
 	@Override
 	public boolean equals(Object c) {
-	
 		if(this == c) return true;
-		
 		if(!(c instanceof Cliente)) return false;
-		
 		Cliente cliente = (Cliente)c;
-		
 		return this.cpf.equals(cliente.cpf);
 	}
 	
+	// Desta forma, os clientes seguirão o mesmo padrão de armazenamento dentro do HashSet, facilitando a sua busca
 	@Override
 	public int hashCode() {
 		return this.cpf.hashCode();
@@ -47,11 +40,21 @@ public class Cliente {
 	public String getCpf() {
 		return this.cpf;
 	}
-
+	
+	public String getNome() {
+		return this.nome;
+	}
+	
+	public Conta getConta() {
+		return this.conta;
+	}
+	
 	public void setEndereco(String nomeDaRua, int numero) {
 		this.endereco = new Endereco(nomeDaRua, numero);
 	}
 	
+	// Método que está vinculado à classe ENUM, atribuindo um tipo de conta à cada opção e 
+	// gerando um número de 3 dígitos aleatório como número da conta
 	public void setConta(TipoContas t) {
 		switch (t) {
 		case MINIMA:
@@ -66,10 +69,6 @@ public class Cliente {
 		default:
 			throw new IllegalArgumentException("Tipo de conta inválido: " + t);
 		}
-	}
-	
-	public String getNome() {
-		return this.nome;
 	}
 	
 	public void sacar(double valor) throws Exception {
@@ -87,9 +86,9 @@ public class Cliente {
 	public void cobrarTaxas() {
 		this.conta.atualizaTaxas();
 	}
-	
-	public Conta getConta() {
-		return this.conta;
+
+	@Override
+	public String toString() {
+		return "Cliente [cpf=" + cpf + ", nome=" + nome + ", endereco=" + endereco + ", conta=" + conta + "]\n";
 	}
-	
 }

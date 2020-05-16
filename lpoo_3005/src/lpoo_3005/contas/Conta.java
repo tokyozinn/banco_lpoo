@@ -10,11 +10,6 @@ public abstract class Conta {
 		this.numero = n;
 	}
 	
-	@Override
-	public String toString() {
-		return "Conta [numero=" + numero + ", saldo=" + saldo + "]";
-	}
-	
 	public void sacar(double valor) throws Exception {
 		if (valor > (this.saldo + this.valorChequeEspecial)) {
 			throw new Exception("Valor acima do permitido.");
@@ -27,11 +22,7 @@ public abstract class Conta {
 		this.saldo += valor;
 	}
 
-	
-	public void atualizaTaxas() {
-		return;
-	}
-
+	public abstract void atualizaTaxas();
 	public abstract void setChequeEspecial(double valor);
 	public abstract String getTipo();
 
@@ -41,5 +32,14 @@ public abstract class Conta {
 
 	public double getSaldo() {
 		return this.saldo;
+	}
+	
+	@Override
+	public String toString() {
+		return "Conta [numero=" + numero + ", saldo=" + saldo + "]";
+	}
+
+	public int getNumero() {
+		return this.numero;
 	}
 }

@@ -8,30 +8,29 @@ public class Teste {
 	public static void main(String[] args) throws Exception {
 		Banco b = new Banco();
 		
-		b.cadastraCliente("1", "Ana");
-		b.cadastraCliente("2", "Bia");
-		b.cadastraCliente("3", "Carol");
-		b.cadastraCliente("4", "Duda");
-		b.cadastraCliente("5", "Flavia");
-		b.cadastraCliente("6", "Gabi");
-		b.cadastraCliente("7", "Joana");
-		b.cadastraCliente("8", "Irene");
-		b.cadastraCliente("8", "Irene");
-		b.cadastraCliente("8", "Irene");
-		b.cadastraCliente("8", "Irene");
-		b.cadastraCliente("8", "Irene");
-		b.cadastraCliente("8", "Irene");
-		b.cadastraCliente("8", "Irene");
-		b.cadastraCliente("8", "Irene");
-		b.cadastraCliente("8", "Irene");
-		
-		b.setEndereco("1", "Rua jafágá", 14);
+		b.cadastraCliente("14", "Ana");
+		b.cadastraCliente("13", "Ana Banana");
+		b.cadastraCliente("22", "Bruna");
+		b.cadastraCliente("21", "Bia");
+		b.cadastraCliente("30", "Cassia");
+		b.cadastraCliente("39", "Carol");
+		b.cadastraCliente("48", "Drauzio");
+		b.cadastraCliente("74", "Duda");
+		b.cadastraCliente("65", "Fernanda");
+		b.cadastraCliente("55", "Flavia");
+		b.cadastraCliente("64", "Gabi");
+		b.cadastraCliente("36", "Gio");
+		b.cadastraCliente("72", "Jack");
+		b.cadastraCliente("17", "Joana");
 
 		
-		b.setConta("1", TipoContas.STANDARD);
-		b.setChequeEspecial("1", 5000);
-		b.depositar("1", 2000);
-		b.sacar("1", 6000);
+		b.setEndereco("14", "Rua jafágá", 14);
+
+		
+		b.setConta("14", TipoContas.STANDARD);
+		b.setChequeEspecial("14", 5000);
+		b.depositar("14", 2000);
+		b.sacar("14", 6000);
 		
 		System.out.println(b.getClientes());
 	}
