@@ -1,8 +1,11 @@
-package lpoo_3005;
+package lpoo_3005.test;
+import lpoo_3005.banco.Banco;
+import lpoo_3005.banco.IBanco;
+import lpoo_3005.banco.TipoContas;
 
 public class TesteBanco {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 
 		IBanco banco = new Banco();
 

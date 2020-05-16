@@ -1,4 +1,4 @@
-package lpoo_3005;
+package lpoo_3005.banco;
 
 public interface IBanco {
 		
@@ -8,7 +8,7 @@ public interface IBanco {
 			
 	public void setConta(String cpf, TipoContas tipoContas);
 	
-	public boolean sacar(String cpf, double valor);
+	public void sacar(String cpf, double valor) throws Exception;
 		
 	public void depositar(String cpf, double valor);
 		

@@ -1,4 +1,4 @@
-package lpoo_3005;
+package lpoo_3005.cliente;
 
 public class Endereco {
 

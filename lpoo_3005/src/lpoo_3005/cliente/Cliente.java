@@ -1,4 +1,11 @@
-package lpoo_3005;
+package lpoo_3005.cliente;
+
+import lpoo_3005.banco.TipoContas;
+import lpoo_3005.contas.Conta;
+import lpoo_3005.contas.ContaMinima;
+import lpoo_3005.contas.ContaStandard;
+import lpoo_3005.contas.ContaUmPorcento;
+
 
 public class Cliente {
 	
@@ -10,7 +17,7 @@ public class Cliente {
 	private String cpf;
 	private String nome;
 	private Endereco endereco;
-	private TipoContas conta;
+	private Conta conta;
 
 	public Cliente(String cpf, String n) {
 		if (cpf == null) {
@@ -46,14 +53,43 @@ public class Cliente {
 	}
 	
 	public void setConta(TipoContas t) {
-		this.conta = t;
+		switch (t) {
+		case MINIMA:
+			this.conta = new ContaMinima((int)(Math.random()*1000));
+			break;
+		case STANDARD:
+			this.conta = new ContaStandard((int)(Math.random()*1000));
+			break;
+		case UM_PORCENTO:
+			this.conta = new ContaUmPorcento((int)(Math.random()*1000));
+			break;
+		default:
+			throw new IllegalArgumentException("Tipo de conta inválido: " + t);
+		}
 	}
 	
 	public String getNome() {
 		return this.nome;
 	}
 	
-	public TipoContas getConta() {
+	public void sacar(double valor) throws Exception {
+		this.conta.sacar(valor);
+	}
+	
+	public void depositar(double valor) {
+		this.conta.depositar(valor);
+	}
+	
+	public void chequeEspecial(double valor) {
+		this.conta.setChequeEspecial(valor);
+	}
+	
+	public void cobrarTaxas() {
+		this.conta.atualizaTaxas();
+	}
+	
+	public Conta getConta() {
 		return this.conta;
 	}
+	
 }
