@@ -9,6 +9,7 @@ public class ContaUmPorcento extends Conta {
 		super(n);
 	}
 	
+	// Nesta modalidade, há o cálculo das taxas do cheque especial independente do saldo, então sempre será calculado
 	@Override
 	public void atualizaTaxas() {
 		this.taxaChequeEspecial = this.saldo * 0.01;

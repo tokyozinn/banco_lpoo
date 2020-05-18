@@ -14,12 +14,15 @@ public class ContaStandard extends Conta {
 		this.valorChequeEspecial = valor;
 	}
 
+	// Somo o valor fixo da taxa mensal da conta à sua % de desconto caso haja uso do cheque especial (saldo negativo)
 	@Override
 	public void atualizaTaxas() {
 		if (this.saldo < 0) {
 			this.taxaChequeEspecial = this.saldo * 0.09;
+			this.saldo += (this.taxa + this.taxaChequeEspecial);
+		} else {
+		this.saldo += this.taxa;
 		}
-		this.saldo += (this.taxa + this.taxaChequeEspecial);
 		return;
 	}
 

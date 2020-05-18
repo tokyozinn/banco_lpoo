@@ -98,10 +98,6 @@ public class Banco implements IBanco {
 					cliente.getConta().getSaldo(), cliente.getConta().getChequeEspecial()));
 			});
 		System.out.println("\n");
-			
-//			System.out.println("Nome: " + cliente.getNome() + " | Tipo de conta: " + cliente.getConta().getTipo() + " | Saldo: " 
-//		+ cliente.getConta().getSaldo() + " | Valor liberado p/ cheque especial: " + cliente.getConta().getChequeEspecial());
-//		});
 	}
 
 	@Override
@@ -109,6 +105,7 @@ public class Banco implements IBanco {
 		return "Banco [clientes=" + clientes + "]";
 	}
 	
+	// Eu retorno uma cópia da lista, garantindo a integridade dos dados no Set
 	public Set<Cliente> getClientes() {
 		return Collections.unmodifiableSet(this.clientes);
 	}

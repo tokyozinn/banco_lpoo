@@ -16,6 +16,7 @@ public class ContaMinima extends Conta {
 		return "Mínima";
 	}
 
+	// Método vazio, pois esta conta não possui taxas
 	@Override
 	public void atualizaTaxas() {
 		return;

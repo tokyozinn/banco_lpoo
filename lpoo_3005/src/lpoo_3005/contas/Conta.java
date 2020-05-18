@@ -10,6 +10,7 @@ public abstract class Conta {
 		this.numero = n;
 	}
 	
+	// Verificando se o valor a ser sacado não está acima do saldo disponível + o limite do cheque especial
 	public void sacar(double valor) throws Exception {
 		if (valor > (this.saldo + this.valorChequeEspecial)) {
 			throw new Exception("Valor acima do permitido.");
@@ -22,6 +23,7 @@ public abstract class Conta {
 		this.saldo += valor;
 	}
 
+	// Como cada conta terá um meio de calcular suas taxas e cheque especial, deixo suas respectivas implementações para as subclasses
 	public abstract void atualizaTaxas();
 	public abstract void setChequeEspecial(double valor);
 	public abstract String getTipo();
