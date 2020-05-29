@@ -93,7 +93,7 @@ public class Banco implements IBanco {
 	@Override
 	public void imprimirRelatorio() {
 		clientes.forEach(cliente -> {
-			System.out.println(String.format("Nome: %s | Conta: nº %d Tipo: %s | Saldo: %.2f | Cheque especial: %.2f" , 
+			System.out.println(String.format("Nome: %s | Conta: nº %d Tipo: %s | Saldo: %.2f | Limite de Cheque especial: %.2f" , 
 					cliente.getNome(), cliente.getConta().getNumero(), cliente.getConta().getTipo(), 
 					cliente.getConta().getSaldo(), cliente.getConta().getChequeEspecial()));
 			});
